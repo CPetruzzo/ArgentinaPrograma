@@ -11,6 +11,8 @@ import { EducacionComponent } from './components/educacion/educacion.component';
 import { HardAndSkillsComponent } from './components/hard-and-skills/hard-and-skills.component';
 import { ProyectsComponent } from './components/proyects/proyects.component';
 import { LoginComponent } from './components/login/login.component';
+import { ContactoComponent } from './components/contacto/contacto.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,11 +24,14 @@ import { LoginComponent } from './components/login/login.component';
     EducacionComponent,
     HardAndSkillsComponent,
     ProyectsComponent,
-    LoginComponent
+    LoginComponent,
+    ContactoComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule, 
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

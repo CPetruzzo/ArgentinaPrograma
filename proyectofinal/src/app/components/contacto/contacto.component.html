@@ -1,0 +1,23 @@
+<!-- CONTACTO que manda msj posta a formspree-->
+<div class="margenes">
+    <h1 class="display-5 fw-bold" id="contacto">Contacto</h1>
+    <div class="mt-2 mb-4 text-white bg-dark rounded-3 sub-margenes">
+
+        <form method="POST" action="https://formspree.io/f/mrgjkldq">
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Correo Electrónico</label>
+                <br>
+                <input type="hidden" name="_subject" value="Contact request from personal website" />
+                <input type="email" name="_replyto" placeholder="Su correo" required><br>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Escriba aquí</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Su mensaje"
+                    rows="3"></textarea>
+                <br>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+
+            </div>
+        </form>
+    </div>
+</div>

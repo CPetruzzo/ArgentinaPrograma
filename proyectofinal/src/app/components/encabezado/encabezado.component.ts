@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EncabezadoComponent implements OnInit {
 
+  nombre = "Facundo Wegher Osci";
   constructor() { }
 
   ngOnInit(): void {

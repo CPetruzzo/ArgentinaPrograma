@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Persona } from 'src/app/model/persona.model';
-import { PersonaService } from 'src/app/service/persona.service';
+import { AboutMe } from 'src/app/about-me';
+import { AboutMeService } from 'src/app/service/aboutme.service';
 
 @Component({
   selector: 'app-about-me',
@@ -9,14 +9,13 @@ import { PersonaService } from 'src/app/service/persona.service';
 })
 export class AboutMeComponent implements OnInit {
 
-  persona: Persona =  new Persona("","");
+  aboutMe: AboutMe =  new AboutMe("","");
   
-  nombre = "Facundo Wegher Osci";
-  constructor(public personaService: PersonaService) { }
+  constructor(private aboutMeService: AboutMeService) { }
 
   ngOnInit(): void {
-    this.personaService.getPersona().subscribe(data=>{
-      this.persona = data;
+    this.aboutMeService.getAboutMe().subscribe(data=>{
+      this.aboutMe = data;
     })
   }
 

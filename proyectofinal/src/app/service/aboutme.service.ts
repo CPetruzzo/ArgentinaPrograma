@@ -6,14 +6,14 @@ import { Persona } from '../model/persona.model';
 @Injectable({
   providedIn: 'root'
 })
-export class PersonaService {
+export class AboutMeService {
   
-  URL='http://localhost:8080/';
+  URL='http://localhost:8080/acercade/';
   
   constructor(private http: HttpClient) {  }
 
-  public getPersona(): Observable<Persona>{
-    return this.http.get<Persona>(this.URL+ 'ver/personas');
+  public getAboutMe(): Observable<Persona>{
+    return this.http.get<Persona>(this.URL+ 'perfil/5');
   }
 
 

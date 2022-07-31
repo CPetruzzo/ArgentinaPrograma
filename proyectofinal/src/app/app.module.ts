@@ -14,8 +14,10 @@ import { ProyectsComponent } from './components/proyects/proyects.component';
 import { LoginComponent } from './components/login/login.component';
 import { ContactoComponent } from './components/contacto/contacto.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BodyComponent } from './components/body/body.component';
+import { HomeComponent } from './components/home/home.component';
 import { BarComponent } from './components/bar/bar.component';
+import { NewEducacionComponent } from './components/educacion/new-educacion.component';
+import { NewAboutMeComponent } from './components/about-me/new-about-me.component';
 
 @NgModule({
   declarations: [
@@ -29,8 +31,10 @@ import { BarComponent } from './components/bar/bar.component';
     ProyectsComponent,
     LoginComponent,
     ContactoComponent,
-    BodyComponent,
-    BarComponent
+    HomeComponent,
+    BarComponent,
+    NewEducacionComponent,
+    NewAboutMeComponent
   ],
   imports: [
     BrowserModule,

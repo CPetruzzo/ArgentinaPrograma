@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Persona } from '../model/persona.model';
+import { AboutMe } from '../model/about-me';
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +12,17 @@ export class AboutMeService {
   
   constructor(private http: HttpClient) {  }
 
-  public getAboutMe(): Observable<Persona>{
-    return this.http.get<Persona>(this.URL+ 'perfil/5');
+  public getAboutMe(): Observable<AboutMe>{
+    return this.http.get<AboutMe>(this.URL+ 'perfil/28');
   }
 
+  public addAboutMe(aboutMe: AboutMe): Observable<AboutMe>{
+    return this.http.post<AboutMe>(this.URL+ 'new/persona', aboutMe);
+  }
+
+  public updateAboutMe(aboutMe: AboutMe): Observable<AboutMe>{
+    return this.http.put<AboutMe>(this.URL+ 'modificar/', aboutMe);
+  }
 
 
 }

@@ -13,7 +13,7 @@ export class AboutMeService {
   constructor(private http: HttpClient) {  }
 
   public getAboutMe(): Observable<AboutMe>{
-    return this.http.get<AboutMe>(this.URL+ 'perfil/28');
+    return this.http.get<AboutMe>(this.URL+ 'perfil/33');
   }
 
   public addAboutMe(aboutMe: AboutMe): Observable<AboutMe>{
@@ -21,8 +21,12 @@ export class AboutMeService {
   }
 
   public updateAboutMe(aboutMe: AboutMe): Observable<AboutMe>{
-    return this.http.put<AboutMe>(this.URL+ 'modificar/', aboutMe);
+    return this.http.put<AboutMe>(this.URL+ 'modificar/33', aboutMe);
   }
 
+  public deleteAboutMe(aboutMe: AboutMe): Observable<AboutMe>{
+    return this.http.delete<AboutMe>(this.URL+ 'eliminar/'+aboutMe.id);
+  }
+  
 
 }

@@ -9,13 +9,13 @@
 
             <div class="accordion" id="accordionExample" *ngFor="let educacion of educacionLista">
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingOne">
+                    <h2 class="accordion-header" id="headingTwo">
                         <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                             {{educacion.titulo}}
                         </button>
                     </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                         data-bs-parent="#accordionExample">
                         <div class="accordion-body">
                             <h4>{{educacion.lugar}}</h4>
@@ -24,49 +24,13 @@
                     </div>
                 </div>
             </div>  
+            
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#modelId2">
+            <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#modelId2" *ngIf="isLogged">
               Agregar más
             </button>
             
-            <!-- Modal -->
-            <div class="modal fade" id="modelId2" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Modal title</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="container">
-                                <form>
-                                    <div class="mb-3 row">
-                                        <label for="inputName" class="col-xs-4 col-form-label">Name</label>
-                                        <div class="col-xs-8">
-                                            <input type="text" class="form-control" name="inputName" id="inputName" placeholder="Name">
-                                        </div>
-                                    </div>
-                                    <fieldset class="mb-3 row">
-                                        <legend class="col-form-legend col-xs-4">Group name</legend>
-                                        <div class="col-xs-8">
-                                            you can use radio and checkboxes here
-                                        </div>
-                                    </fieldset>
-                                    <div class="mb-3 row">
-                                        <div class="offset-sm-4 col-sm-8">
-                                            <button type="submit" class="btn btn-primary">Action</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <app-new-educacion></app-new-educacion>
             
             <!-- <button routerLink="/nuevaEdu" class="btn btn-outline-light" type="button">Agregar más</button> -->
     </div>

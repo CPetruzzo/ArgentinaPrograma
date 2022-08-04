@@ -18,6 +18,8 @@ import { HomeComponent } from './components/home/home.component';
 import { BarComponent } from './components/bar/bar.component';
 import { NewEducacionComponent } from './components/educacion/new-educacion.component';
 import { NewAboutMeComponent } from './components/about-me/new-about-me.component';
+import { interceptorProvider } from './service/interceptor-service';
+import { NewExperienciaComponent } from './components/experiencia/new-experiencia/new-experiencia.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { NewAboutMeComponent } from './components/about-me/new-about-me.componen
     HomeComponent,
     BarComponent,
     NewEducacionComponent,
-    NewAboutMeComponent
+    NewAboutMeComponent,
+    NewExperienciaComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,9 @@ import { NewAboutMeComponent } from './components/about-me/new-about-me.componen
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    interceptorProvider
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

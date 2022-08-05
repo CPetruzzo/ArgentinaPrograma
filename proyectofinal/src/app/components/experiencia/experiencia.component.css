@@ -1,0 +1,12 @@
+.accordion-body.editDelete{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.accordion-body.editDelete.buttons{
+    display: flex;
+    align-items: left;
+    justify-content: space-between;
+}

@@ -10,23 +10,27 @@ export class AboutMeService {
   
   URL='http://localhost:8080/acercade/';
   
-  constructor(private http: HttpClient) {  }
 
-  public getAboutMe(): Observable<AboutMe>{
-    return this.http.get<AboutMe>(this.URL+ 'perfil/33');
+  constructor(private httpClient : HttpClient) { }
+
+  public lista(): Observable<AboutMe[]>{
+    return this.httpClient.get<AboutMe[]>(this.URL + 'ver/personas');
   }
 
-  public addAboutMe(aboutMe: AboutMe): Observable<AboutMe>{
-    return this.http.post<AboutMe>(this.URL+ 'new/persona', aboutMe);
+  public detail(id: number): Observable<AboutMe>{
+    return this.httpClient.get<AboutMe>(this.URL + `perfil/33`);
   }
 
-  public updateAboutMe(aboutMe: AboutMe): Observable<AboutMe>{
-    return this.http.put<AboutMe>(this.URL+ 'modificar/33', aboutMe);
+  public save(aboutMe: AboutMe): Observable<any>{
+    return this.httpClient.post<any>(this.URL + 'new/persona', aboutMe);
   }
 
-  public deleteAboutMe(aboutMe: AboutMe): Observable<AboutMe>{
-    return this.http.delete<AboutMe>(this.URL+ 'eliminar/'+aboutMe.id);
+  public update(id: number, aboutMe: AboutMe): Observable<any>{
+    return this.httpClient.put<any>(this.URL + `modificar/${id}?id=${id}&descripcion=${aboutMe.descripcion}`, aboutMe);
   }
-  
 
+  public delete(id: number): Observable<any>{
+    return this.httpClient.delete<any>(this.URL + `delete/${id}`);
+  }
 }
+

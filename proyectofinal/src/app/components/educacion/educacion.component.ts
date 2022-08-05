@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Educacion } from 'src/app/model/educaction';
 import { EducacionService } from 'src/app/service/educacion.service';
 import { TokenService } from 'src/app/service/token.service';
@@ -10,16 +10,20 @@ import { TokenService } from 'src/app/service/token.service';
   styleUrls: ['./educacion.component.css']
 })
 export class EducacionComponent implements OnInit {
-
+  
+  id?: number;
   titulo: string = '';
   lugar: string = '';
-  f_inicio: number = 2022;
-  f_fin: number = 2022;
+  fecha_inicio!: number;
+  fecha_fin!: number;
+  educacion: Educacion = new Educacion("","",0,0);
   educacionLista: Educacion[] = [];
 
-  constructor(private educacionService: EducacionService
-    , private tokenService: TokenService, private router: Router) { }
+  constructor(private educacionService: EducacionService,
+    private tokenService: TokenService, 
+    private router: Router) { }
   isLogged = false;
+  modalOn=false;
 
   ngOnInit(): void {
     this.cargarEducacion();
@@ -35,18 +39,40 @@ export class EducacionComponent implements OnInit {
       this.educacionLista = data;
     })
   }
+  
+  onDeleteEdu(id?: number){
+    console.log(id);
+    if(id != undefined){
+      this.educacionService.deleteEducacion(id)
+      .subscribe(data => {
+        this.cargarEducacion();
+      })
+    }
+    window.location.reload();
+  }
 
-  onCreate(): void{
-    const edu = new Educacion(this.titulo, this.lugar, this.f_inicio, this.f_fin);
-    this.educacionService.addEducacion(edu).subscribe(
-      (data) => {
-        alert("Educacion creada con exito");
-      }, err => {
-        alert("Error al crear la educacion");
+
+
+  onUpdateEdu(id?: number){
+    console.log(id);
+    let educ = this.educacionLista.find(x => x.id == id);
+    if(id != undefined && educ != undefined){
+      this.educacionService.updateEducacion(id, educ).subscribe(
+      data => {
+        alert("Modicada la educacion");
       }
-    );
-    this.educacionLista.push(edu);
-    
+    )
+    this.cargarEducacion();
+      window.location.reload();  
+    }
+  }
+
+
+  onModal(){
+    this.modalOn=true;
+  }
+
+  onModalOff(){
+    this.modalOn=false;
   }
 }
-

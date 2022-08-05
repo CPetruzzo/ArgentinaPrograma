@@ -3,25 +3,32 @@
     <h1 class="display-5 fw-bold" id="contacto">Contacto</h1>
     <div class="mt-2 mb-4 text-white bg-dark rounded-3 sub-margenes">
 
-        <form
-            action="https://formspree.io/f/mrgjkldq"
-            method="POST"
-        >
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Correo Electrónico</label>
-                <br>
-                <input type="hidden" name="_subject" value="Contact request from personal website" />
-                <input type="email" name="_replyto" placeholder="Su correo" required><br>
+        <!-- modify this form HTML and place wherever you want your form -->
+        <form action="https://formspree.io/f/mrgjkldq" method="POST">
+            <div >
+                <label class="col">
+                    Su correo:
+                    <br>
+                    <input type="email" placeholder="correo@correo.com" name="email">
+                </label>
             </div>
-            <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Escriba aquí</label>
-                <textarea name="message" class="form-control" id="exampleFormControlTextarea1" placeholder="Su mensaje"
-                    rows="3"></textarea>
-                <br>
-                <button type="submit" class="btn btn-primary">Enviar</button>
-
+            <div >
+                <label class="row mensaje">
+                    Su mensaje:
+                    <br>
+                    <textarea rows="4" name="message" placeholder="Contenido del mensaje que desea enviar"></textarea>
+                </label>
+            </div>
+            <div>
+                <!-- your other form fields go here -->
+                <button type="submit" class="btn btn-primary">Send</button>
             </div>
         </form>
+        <!-- modify this form HTML and place wherever you want your form -->
+
+
+
+
     </div>
 </div>
 

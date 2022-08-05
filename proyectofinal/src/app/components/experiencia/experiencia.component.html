@@ -16,14 +16,20 @@
                         data-bs-parent="#accordionExample">
                         <div class="accordion-body">
                             <h4>{{experiencia.lugar}}</h4>
-                            <span class="education-date">{{experiencia.f_inicio}} - {{experiencia.f_fin}}</span>
-                            <h4>{{experiencia.descripcion}}</h4>
-                            <p>
-                            </p>
+                            <span class="education-date">{{experiencia.fecha_inicio}} - {{experiencia.fecha_fin}}</span>
+                            
+                            <div class="accordion-body editDelete">
+                                <h4>{{experiencia.descripcion}}</h4>
+                                <div class="accordion-body editDelete buttons" *ngIf="isLogged">
+                                    <i [ngStyle]="{'color': 'blue'}" style="cursor: pointer; margin-right: 30px;"
+                                        class="fa-solid fa-pen-to-square"></i>
+                                    <i [ngStyle]="{'color': 'red'}" style="cursor: pointer; "
+                                        class="fa-solid fa-xmark"></i>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-
             </div>
             <div>
                 <button class="btn btn-primary" routerLink="/new-experiencia" *ngIf="isLogged">Agregar experiencia</button>

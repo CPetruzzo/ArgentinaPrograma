@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AboutMe } from 'src/app/model/about-me';
 
 import { AboutMeService } from 'src/app/service/aboutme.service';
+import { TokenService } from 'src/app/service/token.service';
 
 @Component({
   selector: 'app-about-me',
@@ -11,22 +12,26 @@ import { AboutMeService } from 'src/app/service/aboutme.service';
 })
 export class AboutMeComponent implements OnInit {
 
-  aboutMe: AboutMe =  new AboutMe("");
-  descripcion: string="";
+  aboutMe: AboutMe = new AboutMe("");
+  descripcion: string = "";
 
-  constructor(private aboutMeService: AboutMeService, private router: Router) { }
+  isLogged = false;
+
+  constructor(private aboutMeService: AboutMeService, private router: Router, private tokenService: TokenService) { }
 
   ngOnInit(): void {
-    this.aboutMeService.getAboutMe().subscribe(data=>{
-      this.aboutMe = data;
-    })
+    this.cargarAboutMe();
+    if (this.tokenService.getToken()) {
+      this.isLogged = true;
+    } else {
+      this.isLogged = false;
+    }
   }
 
-  onSubmit(): void {
-    this.aboutMeService.updateAboutMe(this.aboutMe).subscribe(data=>{
-      this.aboutMe = data;
-    }
-    )
-  }
+cargarAboutMe(): void {
+  this.aboutMeService.detail(33).subscribe(data => {
+    this.aboutMe = data;
+  })
+}
 
 }

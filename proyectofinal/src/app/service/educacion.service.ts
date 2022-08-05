@@ -23,18 +23,18 @@ export class EducacionService {
   }
 
   //para agregar una
-  public addEducacion(educacion: Educacion): Observable<Educacion>{
-    return this.http.post<Educacion>(this.URL+ 'new/educacion', educacion);
+  public addEducacion(educacion: Educacion): Observable<any>{
+    return this.http.post<any>(this.URL+ 'new/educacion', educacion);
   }
 
   //para actualizar una
-  public updateEducacion(id: number, educacion: Educacion): Observable<Educacion>{
-    return this.http.put<Educacion>(this.URL+ `modificar/${id}`, educacion);
+  public updateEducacion(id: number, educacion: Educacion): Observable<any>{
+    return this.http.put<any>(this.URL+ `modificar/${id}?id=${id}&titulo=${educacion.titulo}&lugar=${educacion.lugar}&fecha_inicio=${educacion.fecha_inicio}&fecha_fin=${educacion.fecha_fin}`, educacion);
   }
 
   //para borrar una
-  public deleteEducacion(id: number): Observable<Educacion>{
-    return this.http.delete<Educacion>(this.URL+ `delete/${id}`);
+  public deleteEducacion(id: number): Observable<any>{
+    return this.http.delete<any>(this.URL+ `delete/${id}`);
   }
 
 

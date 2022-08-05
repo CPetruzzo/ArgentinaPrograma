@@ -16,7 +16,8 @@ export class NewExperienciaComponent implements OnInit {
   f_inicio: string = '';
   f_fin: string = '';
 
-  constructor(private experienciaService: ExperienciaService, private router: Router) { }
+  constructor(private experienciaService: ExperienciaService, 
+    private router: Router) { }
 
   ngOnInit(): void {
   }

@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private tokenService: TokenService , private authService: AuthService, private router: Router){ 
     ///Creamos el grupo de controles para el formulario de login
     this.form= this.formBuilder.group({
-      password:['',[Validators.required, Validators.minLength(8)]],
+      password:['',[Validators.required, Validators.minLength(4)]],
       email:['', [Validators.required, Validators.email]],
    })
   }

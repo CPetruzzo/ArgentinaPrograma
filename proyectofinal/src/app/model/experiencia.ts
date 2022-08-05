@@ -3,15 +3,15 @@ export class Experiencia {
     cargo: string;
     lugar: string;
     descripcion: string;
-    f_inicio: string;
-    f_fin: string;
+    fecha_inicio: string;
+    fecha_fin: string;
     
-    constructor(cargo: string, descripcion: string, lugar: string ,f_inicio: string, f_fin: string) {
+    constructor(cargo: string, descripcion: string, lugar: string ,fecha_inicio: string, fecha_fin: string) {
    
         this.cargo = cargo;
         this.lugar = lugar;
         this.descripcion = descripcion;
-        this.f_inicio = f_inicio;
-        this.f_fin = f_fin;
+        this.fecha_inicio = fecha_inicio;
+        this.fecha_fin = fecha_fin;
     }    
 }

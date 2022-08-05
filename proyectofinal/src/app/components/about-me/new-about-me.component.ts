@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
+import { AppComponent } from 'src/app/app.component';
 import { AboutMe } from 'src/app/model/about-me';
 import { AboutMeService } from 'src/app/service/aboutme.service';
 
@@ -8,23 +10,29 @@ import { AboutMeService } from 'src/app/service/aboutme.service';
   styleUrls: ['./new-about-me.component.css']
 })
 export class NewAboutMeComponent implements OnInit {
+  
+  isLogged = false;
+  aboutMe: AboutMe = new AboutMe("");
 
-  @Input() aboutMe: string=("");
-  @Output() onCreate: EventEmitter<AboutMe> = new EventEmitter(); 
-
-  constructor() { }
+  constructor(
+    private aboutMeService: AboutMeService,
+    private router: Router,
+    private appComp: AppComponent
+  ) { }
 
   ngOnInit(): void {
   }
-  
-  onSubmit(): void {
-    console.log("clickeo save") ;
+
+  onUpdate(): void{
+    console.log(this.aboutMe);
+    this.aboutMeService.update(33, this.aboutMe).subscribe(
+      data => {
+        alert("Modicado el about me");
+        this.router.navigate(['']);
+      }
+    )
+  this.appComp.reloadCurrentPage();
   }
-  // onSubmit(descripcion: string): void {
-  //   const aboutMe = new AboutMe(descripcion);
-  //   console.log("AboutMe: " + aboutMe.descripcion);
-  //   this.onCreate.emit(aboutMe);
-  // }
-
-
 }
+
+

@@ -15,6 +15,7 @@ export class InfoComponent implements OnInit {
   info: Info = new Info("","","");
 
   constructor(
+    
     private infoService: InfoService,
     private router: Router,
     private appComp: AppComponent

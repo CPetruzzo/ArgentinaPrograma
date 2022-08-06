@@ -12,14 +12,17 @@ import { TokenService } from 'src/app/service/token.service';
 export class EncabezadoComponent implements OnInit {
 
   info = new Info("","","");
+  isLoggedAdmin = false;
   isLogged = false;
 
   constructor(private infoService: InfoService, private router:Router, private tokenService: TokenService) { }
 
   ngOnInit(): void {
     this.cargarInfo();
+    if(this.tokenService.getAuthorities().includes('ROLE_ADMIN'))
+      this.isLoggedAdmin = true;   
     if(this.tokenService.getToken()){
-      this.isLogged=true;
+      this.isLogged = true;
     }else{
       this.isLogged = false;
     }
@@ -33,6 +36,8 @@ export class EncabezadoComponent implements OnInit {
   login(){
     this.router.navigate(['/login'])
   }
+
+
 
   cargarInfo(): void {
     this.infoService.detail(33).subscribe(data => {

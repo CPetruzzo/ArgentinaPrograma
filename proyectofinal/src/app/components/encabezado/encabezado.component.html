@@ -28,12 +28,13 @@
                 </li>
             </ul>
 
-            <button type="button" class="btn btn-primary" (click)="login()" *ngIf="!isLogged">
-                Log in
-            </button>
-
+            
             <button type="button" class="btn btn-primary" (click)="onLogOut()" *ngIf="isLogged" routerLink="/login">
                 Log out
+            </button>
+
+            <button type="button" class="btn btn-primary" (click)="login()" *ngIf="!isLogged">
+                Log in
             </button>
 
         </div>
@@ -49,16 +50,10 @@
 
     <div>
         <img id="foto" style="border-radius: 100%;" src="{{info.img}}" alt="{{info.apellido}} ">
-
-        <button type="button" class="btn btn-primary btn-lg" *ngIf="isLogged" data-bs-toggle="modal"
-                data-bs-target="#modelId5">
-                <i *ngIf="isLogged" id="modiFoto" class="fa-solid fa-pen-to-square">
-                    <!-- Button trigger modal -->
-                    
-        
-                </i></button>
-        
-
+        <i class="fa-solid fa-pen-to-square" id="modiFoto" type="button" *ngIf="isLogged" data-bs-toggle="modal"
+            data-bs-target="#modelId5">
+            <!-- Button trigger modal -->
+        </i>
     </div>
 
     <app-info></app-info>

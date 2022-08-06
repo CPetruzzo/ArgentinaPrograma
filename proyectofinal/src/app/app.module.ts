@@ -20,7 +20,6 @@ import { NewEducacionComponent } from './components/educacion/new-educacion.comp
 import { NewAboutMeComponent } from './components/about-me/new-about-me.component';
 import { interceptorProvider } from './service/interceptor-service';
 import { NewExperienciaComponent } from './components/experiencia/new-experiencia/new-experiencia.component';
-import { EditEduComponent } from './components/educacion/edit-edu/edit-edu.component';
 import { NewProyComponent } from './components/proyects/new-proy/new-proy.component';
 import { InfoComponent } from './components/encabezado/info/info.component';
 
@@ -41,7 +40,6 @@ import { InfoComponent } from './components/encabezado/info/info.component';
     NewEducacionComponent,
     NewAboutMeComponent,
     NewExperienciaComponent,
-    EditEduComponent,
     NewProyComponent,
     InfoComponent
   ],

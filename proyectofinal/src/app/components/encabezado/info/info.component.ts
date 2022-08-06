@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
 import { Info } from 'src/app/model/info';
 import { InfoService } from 'src/app/service/info.service';
-import { EncabezadoComponent } from '../encabezado.component';
 
 @Component({
   selector: 'app-info',
@@ -16,7 +15,7 @@ export class InfoComponent implements OnInit {
   info: Info = new Info("","","");
 
   constructor(
-    private encabezadoComp: EncabezadoComponent,
+    
     private infoService: InfoService,
     private router: Router,
     private appComp: AppComponent
@@ -33,7 +32,6 @@ export class InfoComponent implements OnInit {
         this.router.navigate(['']);
       }
     )
-    this.encabezadoComp.cargarInfo();
   this.appComp.reloadCurrentPage();
   }
 }

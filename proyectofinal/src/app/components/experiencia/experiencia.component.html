@@ -15,178 +15,97 @@
                     <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
                         data-bs-parent="#accordionExample">
                         <div class="accordion-body">
-                            <h4>{{experiencia.lugar}}</h4>
-                            <span class="education-date">{{experiencia.fecha_inicio}} - {{experiencia.fecha_fin}}</span>
-                            
+                            <h4 *ngIf="!modalOn">{{experiencia.lugar}}</h4>
+                            <span *ngIf="!modalOn" class="education-date">{{experiencia.fecha_inicio}} - {{experiencia.fecha_fin}}</span>
+
                             <div class="accordion-body editDelete">
-                                <h4>{{experiencia.descripcion}}</h4>
+                                <h4 *ngIf="!modalOn" >{{experiencia.descripcion}}</h4>
                                 <div class="accordion-body editDelete buttons" *ngIf="isLogged">
-                                    <i [ngStyle]="{'color': 'blue'}" style="cursor: pointer; margin-right: 30px;"
-                                        class="fa-solid fa-pen-to-square"></i>
-                                    <i [ngStyle]="{'color': 'red'}" style="cursor: pointer; "
-                                        class="fa-solid fa-xmark"></i>
+
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn" (click)="onModal()" *ngIf="!modalOn">
+                                        <i [ngStyle]="{'color': 'blue'}" style="cursor: pointer; margin-right: 30px;"
+                                            class="fa-solid fa-pen-to-square">
+                                        </i>
+                                    </button>
+
+                                    <form (ngSubmit)="onDeleteExp(experiencia.id)" novalidate #f="ngForm"
+                                        *ngIf="!modalOn">
+                                        <button type="submit" class="btn" [disabled]="!f.valid">
+                                            <i [ngStyle]="{'color': 'red'}" style="cursor: pointer; "
+                                                class="fa-solid fa-xmark"></i>
+                                        </button>
+                                    </form>
+
+                                </div>
+
+                                <!-- Modal -->
+                                <div role="dialog" id="miModal" class="col" *ngIf="modalOn">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content" style="color:black">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Editar educación</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close" (click)="onModalOff()"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="container">
+
+                                                    <form (ngSubmit)="onUpdateExp(experiencia.id)" novalidate
+                                                        #f="ngForm">
+
+                                                        <div class="form-group">
+                                                            <label for="titulo">Titulo</label>
+                                                            <input type="text" class="form-control" id="titulo"
+                                                                placeholder="Nombre del título obtenido" name="titulo"
+                                                                [(ngModel)]="experiencia.cargo" required>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="lugar">Lugar</label>
+                                                            <input type="text" class="form-control" id="lugar"
+                                                                placeholder="Nombre del establecimiento"
+                                                                name="lugar" [(ngModel)]="experiencia.lugar" required>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="descripcion">Descripción</label>
+                                                            <input type="text" class="form-control" id="descripcion"
+                                                                placeholder="Breve descripcion de la experiencia laboral"
+                                                                name="descripcion" [(ngModel)]="experiencia.descripcion"
+                                                                required>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="fecha_inicio">Fecha inicio</label>
+                                                            <input type="text" class="form-control" id="fecha_inicio"
+                                                                placeholder="aaaa" name="fecha_inicio"
+                                                                [(ngModel)]="experiencia.fecha_inicio" required>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="fecha_fin">Fecha fin</label>
+                                                            <input type="text" class="form-control" id="fecha_fin"
+                                                                placeholder="aaaa" name="fecha_fin"
+                                                                [(ngModel)]="experiencia.fecha_fin" required>
+                                                        </div>
+
+                                                        <button type="submit" class="btn btn-primary"
+                                                            [disabled]="!f.valid">Guardar
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div>
-                <button class="btn btn-primary" routerLink="/new-experiencia" *ngIf="isLogged">Agregar experiencia</button>
-            </div>
+                <button class="btn btn-primary" routerLink="/new-experiencia" *ngIf="isLogged">
+                    Agregar experiencia
+                </button>
+            
 
         </div>
     </div>
 </div>
-
-
-
-
-
-    <!-- 
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingTwo">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                Docente de Análisis Matemático II
-                            </button>
-                        </h2>
-                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                            data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <h4>Universidad Autónoma de Entre Ríos - Facultad de Ciencia y Tecnología</h4>
-                                <span class="education-date">Febrero 2021 - Marzo 2022</span>
-                                <h4>Profesorado en Matemática</h4>
-                                <p>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingThree">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                Ingeniero de procesos - Encargado de planta
-                            </button>
-                        </h2>
-                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-                            data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <div class="accordion-body">
-                                    <h4>Indaquim S.A. - Santa Fe</h4>
-                                    <span class="education-date">Agosto 2019 - Enero 2020</span>
-                                    <h4>Descripción</h4>
-                                    <p>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingFour">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                Control de Establecimientos Alimenticios
-                            </button>
-                        </h2>
-                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
-                            data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <div class="accordion-body">
-                                    <h4>Municipalidad de María Grande, Entre Ríos, Argentina</h4>
-                                    <span class="education-date">Agosto 2019 - Enero 2020</span>
-                                    <h4>Descripción</h4>
-                                    <p>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingFive">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                Analista de Laboratorio - Ingeniero Desarrollador de Productos
-                            </button>
-                        </h2>
-                        <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
-                            data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <div class="accordion-body">
-                                    <h4>Naiman S.A. - Entre Ríos, Argentina</h4>
-                                    <span class="education-date">Mayo 2018 - Octubre 2018</span>
-                                    <h4>Descripción</h4>
-                                    <p>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingSix">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-                                Analista de Laboratorio Fisicoquímico
-                            </button>
-                        </h2>
-                        <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
-                            data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <div class="accordion-body">
-                                    <h4>Mercolab S.A. - Santa Fe, Argentina</h4>
-                                    <span class="education-date">Enero 2016 - Mayo 2016</span>
-                                    <h4>Descripción</h4>
-                                    <p>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingSeven">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-                                Tutor de Matemática
-                            </button>
-                        </h2>
-                        <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven"
-                            data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <div class="accordion-body">
-                                    <h4>Mercolab S.A. - Santa Fe, Argentina</h4>
-                                    <span class="education-date">Enero 2016 - Mayo 2016</span>
-                                    <h4>Descripción</h4>
-                                    <p>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingEight">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
-                                Tutor de Físicoquímica
-                            </button>
-                        </h2>
-                        <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight"
-                            data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <div class="accordion-body">
-                                    <h4>Mercolab S.A. - Santa Fe, Argentina</h4>
-                                    <span class="education-date">Enero 2016 - Mayo 2016</span>
-                                    <h4>Descripción</h4>
-                                    <p>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="btn btn-outline-light" type="button">Agregar más</button>
-                </div> -->

@@ -16,6 +16,7 @@ export class EducacionComponent implements OnInit {
   lugar: string = '';
   fecha_inicio!: number;
   fecha_fin!: number;
+  
   educacion: Educacion = new Educacion("","",0,0);
   educacionLista: Educacion[] = [];
 

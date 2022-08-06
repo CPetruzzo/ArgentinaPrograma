@@ -21,6 +21,8 @@ import { NewAboutMeComponent } from './components/about-me/new-about-me.componen
 import { interceptorProvider } from './service/interceptor-service';
 import { NewExperienciaComponent } from './components/experiencia/new-experiencia/new-experiencia.component';
 import { EditEduComponent } from './components/educacion/edit-edu/edit-edu.component';
+import { NewProyComponent } from './components/proyects/new-proy/new-proy.component';
+import { InfoComponent } from './components/encabezado/info/info.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { EditEduComponent } from './components/educacion/edit-edu/edit-edu.compo
     NewEducacionComponent,
     NewAboutMeComponent,
     NewExperienciaComponent,
-    EditEduComponent
+    EditEduComponent,
+    NewProyComponent,
+    InfoComponent
   ],
   imports: [
     BrowserModule,

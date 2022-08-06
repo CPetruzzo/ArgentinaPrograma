@@ -1,6 +1,7 @@
 <div class="container">
     <div class="row">
-        <div>
+        <div class="row form">
+            <h3 id="title">Nueva experiencia</h3>
             <form (ngSubmit)="onCreate()" novalidate #f="ngForm">
                 <div class="form-group">
                     <label for="cargo">Cargo</label>
@@ -22,7 +23,10 @@
                     <label for="f_fin">Fecha fin</label>
                     <input type="text" class="form-control" id="f_fin" name="f_fin" [(ngModel)]="f_fin" required>
                 </div>
-                <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Guardar</button>
+                <button type="submit" class="btn btn-primary save" [disabled]="!f.valid">Guardar</button>
+                <button routerLink="" class="btn btn-primary cancel">
+                    Volver
+                </button>
             </form>
         </div>
     </div>

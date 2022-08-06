@@ -1,4 +1,108 @@
-    <!-- PROYECTOS -->
+<!-- EXPERIENCIA -->
+<div class="margenes" id="experiencia">
+    <h1 class="display-5 fw-bold">Proyectos</h1>
+    <div class="mt-2 mb-4 text-white bg-dark rounded-3">
+        <div class="container-fluid py-5">
+
+            <div class="accordion" id="accordionExample" *ngFor="let proyecto of proyectoLista">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            {{proyecto.nombre}}
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+
+
+                            <div class="accordion-body editDelete">
+                                <span *ngIf="!modalOn">{{proyecto.descripcion}}</span>
+                                <span *ngIf="!modalOn">
+                                    <a href="{{proyecto.url}}">Link a {{proyecto.nombre}}</a>
+                                </span>
+                                <div class="accordion-body editDelete buttons" *ngIf="isLogged">
+
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn" (click)="onModal()" *ngIf="!modalOn">
+                                        <i [ngStyle]="{'color': 'blue'}" style="cursor: pointer; margin-right: 30px;"
+                                            class="fa-solid fa-pen-to-square">
+                                        </i>
+                                    </button>
+
+                                    <form (ngSubmit)="onDeleteProy(proyecto.id)" novalidate #f="ngForm"
+                                        *ngIf="!modalOn">
+                                        <button type="submit" class="btn" [disabled]="!f.valid">
+                                            <i [ngStyle]="{'color': 'red'}" style="cursor: pointer; "
+                                                class="fa-solid fa-xmark"></i>
+                                        </button>
+                                    </form>
+
+                                </div>
+
+                                <!-- Modal -->
+                                <div role="dialog" id="miModal" class="col" *ngIf="modalOn">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content" style="color:black">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Editar proyecto</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close" (click)="onModalOff()"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="container">
+
+                                                    <form (ngSubmit)="onUpdateProy(proyecto.id)" novalidate #f="ngForm">
+
+                                                        <div class="form-group">
+                                                            <label for="titulo">Proyecto</label>
+                                                            <input type="text" class="form-control" id="titulo"
+                                                                placeholder="Nombre del proyecto" name="titulo"
+                                                                [(ngModel)]="proyecto.nombre" required>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="lugar">Descripcion</label>
+                                                            <input type="text" class="form-control" id="lugar"
+                                                                placeholder="Una breve descripción del proyecto"
+                                                                name="lugar" [(ngModel)]="proyecto.descripcion"
+                                                                required>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="url">Link</label>
+                                                            <input type="text" class="form-control" id="url"
+                                                                placeholder="Una breve descripción del proyecto"
+                                                                name="url" [(ngModel)]="proyecto.url"
+                                                                required>
+                                                        </div>
+                                                        <button type="submit" class="btn btn-primary"
+                                                            [disabled]="!f.valid">Guardar
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary btn-lg" routerLink="" data-bs-toggle="modal"
+                data-bs-target="#modelId4" *ngIf="isLogged">
+                Agregar más
+            </button>
+
+            <app-new-proy></app-new-proy>
+        </div>
+    </div>
+</div>
+
+
+<!-- PROYECTOS
     <div class="margenes">
         <h1 class="display-5 fw-bold" id="proyectos">Proyectos</h1>
         <div class="mt-2 mb-4 text-white bg-dark rounded-3">
@@ -25,13 +129,11 @@
                                 otros
                                 proyectos.
 
-                                <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                     data-bs-target="#gameModal">
                                     Log in
                                 </button>
 
-                                <!-- Modal -->
                                 <div class="modal fade" id="gameModal" tabindex="-1" aria-labelledby="gameModalLabel"
                                     aria-hidden="true">
                                     <div class="modal-dialog">
@@ -93,4 +195,4 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->

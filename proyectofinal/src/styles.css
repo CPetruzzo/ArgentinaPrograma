@@ -3376,9 +3376,11 @@ footer {
     }
 
     #foto {
+    
         width: 150px;
         height: 150px;
-        margin-left:-30px;
+        margin-left:-40px;
+        border-radius: 100%;
     }
 
     .social a:hover {

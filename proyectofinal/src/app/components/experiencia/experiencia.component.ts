@@ -10,6 +10,7 @@ import { TokenService } from 'src/app/service/token.service';
 })
 export class ExperienciaComponent implements OnInit {
 
+  modalOn: boolean = false;
   experienciaLista: Experiencia[] = [];
   
   constructor(private experienciaService: ExperienciaService, private tokenService: TokenService) { }
@@ -31,6 +32,39 @@ export class ExperienciaComponent implements OnInit {
           this.experienciaLista = data;
         }
       );
+    }
+
+    onDeleteExp(id?: number){
+      console.log(id);
+      if(id != undefined){
+        this.experienciaService.delete(id)
+        .subscribe(data => {
+          this.cargarExperiencia();
+        })
+      }
+      window.location.reload();
+    }
+  
+    onUpdateExp(id?: number){
+      console.log(id);
+      let exp = this.experienciaLista.find(x => x.id == id);
+      if(id != undefined && exp != undefined){
+        this.experienciaService.update(id, exp).subscribe(
+        data => {
+          alert("Modicada la experiencia");
+        }
+      )
+      this.cargarExperiencia();
+        window.location.reload();  
+      }
+    }
+  
+    onModal(){
+      this.modalOn=true;
+    }
+  
+    onModalOff(){
+      this.modalOn=false;
     }
 
 }

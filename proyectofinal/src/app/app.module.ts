@@ -22,6 +22,7 @@ import { interceptorProvider } from './service/interceptor-service';
 import { NewExperienciaComponent } from './components/experiencia/new-experiencia/new-experiencia.component';
 import { NewProyComponent } from './components/proyects/new-proy/new-proy.component';
 import { InfoComponent } from './components/encabezado/info/info.component';
+import { NewSkillComponent } from './components/hard-and-skills/new-skill/new-skill.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { InfoComponent } from './components/encabezado/info/info.component';
     NewAboutMeComponent,
     NewExperienciaComponent,
     NewProyComponent,
-    InfoComponent
+    InfoComponent,
+    NewSkillComponent
   ],
   imports: [
     BrowserModule,

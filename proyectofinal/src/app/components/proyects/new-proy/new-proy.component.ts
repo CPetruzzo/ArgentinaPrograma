@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Proyecto } from 'src/app/model/proyecto';
 import { ProyectoService } from 'src/app/service/proyecto.service';
+import { ProyectsComponent } from '../proyects.component';
 
 @Component({
   selector: 'app-new-proy',
@@ -15,6 +16,7 @@ export class NewProyComponent implements OnInit {
   url: string = '';
 
   constructor(private proyectoService: ProyectoService, 
+    private proyecto: ProyectsComponent,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -28,6 +30,7 @@ export class NewProyComponent implements OnInit {
         this.router.navigate(['']);
       }
     );
+    this.proyecto.cargarProyecto();
     window.location.reload();
   }
 }

@@ -8,7 +8,7 @@ import { AboutMe } from '../model/about-me';
 })
 export class AboutMeService {
   
-  URL='http://localhost:8080/acercade/';
+  URL='https://fwarg.herokuapp.com/acercade/';
   
 
   constructor(private httpClient : HttpClient) { }

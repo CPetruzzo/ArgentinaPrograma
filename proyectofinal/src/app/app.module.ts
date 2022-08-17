@@ -24,6 +24,8 @@ import { NewProyComponent } from './components/proyects/new-proy/new-proy.compon
 import { InfoComponent } from './components/encabezado/info/info.component';
 import { NewSkillComponent } from './components/hard-and-skills/new-skill/new-skill.component';
 
+import { NgCircleProgressModule } from 'ng-circle-progress';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,6 +53,18 @@ import { NewSkillComponent } from './components/hard-and-skills/new-skill/new-sk
     FormsModule, 
     ReactiveFormsModule,
     HttpClientModule,
+
+    
+    // Specify ng-circle-progress as an import
+    NgCircleProgressModule.forRoot({
+      // set defaults here
+      radius: 100,
+      outerStrokeWidth: 16,
+      innerStrokeWidth: 8,
+      outerStrokeColor: "#fff555",
+      innerStrokeColor: "#555fff",
+      animationDuration: 300,
+    })
   ],
   providers: [
     interceptorProvider

@@ -13,6 +13,7 @@ export class NewSkillComponent implements OnInit {
   img: string = '';
   skill: string = '';
   descripcion: string = '';
+  percent: number = 0;
 
   constructor(private skillsService: SkillsService, 
     private router: Router) { }
@@ -21,7 +22,7 @@ export class NewSkillComponent implements OnInit {
   }
 
   onCreate(): void{
-    const skl = new Skills(this.img, this.skill, this.descripcion);
+    const skl = new Skills(this.img, this.skill, this.descripcion, this.percent);
     this.skillsService.save(skl).subscribe(
       (data) => {
         console.log("Habilidad creada con exito");

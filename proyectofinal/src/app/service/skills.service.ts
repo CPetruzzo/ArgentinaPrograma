@@ -26,7 +26,7 @@ export class SkillsService {
   }
 
   public update(id: number, skills: Skills): Observable<any>{
-    return this.httpClient.put<any>(this.URL + `/modificar/${id}?id=${id}&img=${skills.img}&skill=${skills.skill}&descripcion=${skills.descripcion}`, skills);
+    return this.httpClient.put<any>(this.URL + `/modificar/${id}?id=${id}&img=${skills.img}&skill=${skills.skill}&descripcion=${skills.descripcion}&percent=${skills.percent}`, skills);
   }
 
   public delete(id: number): Observable<any>{

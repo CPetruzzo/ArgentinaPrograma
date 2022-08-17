@@ -27,6 +27,11 @@
                             <input type="text" class="form-control" id="descripcion" placeholder="Descripción de la habilidad"
                                 name="descripcion" [(ngModel)]="descripcion" required>
                         </div>
+                        <div class="form-group">
+                            <label for="percent">Porcentaje</label>
+                            <input type="text" class="form-control" id="percent" placeholder="Porcentaje de la habilidad"
+                                name="percent" [(ngModel)]="percent" required>
+                        </div>
                 
                         <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Guardar</button>
 

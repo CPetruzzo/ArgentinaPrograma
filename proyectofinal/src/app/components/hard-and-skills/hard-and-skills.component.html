@@ -6,6 +6,21 @@
         <!-- Three columns of text below the carousel -->
         <div class="row" id="skillRow">
 
+            <!-- <circle-progress
+            [showImage] = "true"
+            [radius] = "80"
+            [outerStrokeWidth] = "10"
+            [animation] = "true"
+            [animationDuration] = "500"
+            [percent] = "95"
+            imageSrc="assets/logoArgProg.png"
+            [imageHeight]=80
+            [imageWidth]=100
+            > -->
+        <!-- </circle-progress> -->
+        <!-- <p>Nombre de proyectos</p> -->
+
+
             <div class="col" *ngFor="let skill of skillsLista">
 
                 <form id="delete" (ngSubmit)="onDeleteSkill(skill.id)" novalidate #f="ngForm" *ngIf="!modalOn && isLogged">
@@ -13,9 +28,26 @@
                         <i [ngStyle]="{'color': 'red'}" style="cursor: pointer; " class="fa-solid fa-xmark"></i>
                     </button>
                 </form>
-                
-                <img class="skillsCell" src="{{skill.img}}" alt="{{skill.skill}}">
+                            
+                <circle-progress
+                    [showImage] = "true"
+                    [radius] = "80"
+                    [outerStrokeWidth] = "10"
+                    [animation] = "true"
+                    [animationDuration] = "500"
+                    [percent] = "skill.percent"
+                    imageSrc="{{skill.img}}"
+                    [imageHeight]=80
+                    [imageWidth]=80
+                    [radius]="100"
+                    >
+                </circle-progress> 
                 <p>{{skill.skill}}</p>
+
+
+
+                <!-- <img class="skillsCell" src="{{skill.img}}" alt="{{skill.skill}}">
+                <p>{{skill.skill}}</p> -->
 
                 <div class="accordion-body editDelete buttons" *ngIf="isLogged">
 
@@ -58,6 +90,11 @@
                                                 <input type="text" class="form-control" id="descripcion"
                                                     placeholder="Una breve descripción del skill" name="descripcion"
                                                     [(ngModel)]="skill.descripcion" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="percent">Porcentaje</label>
+                                                <input type="text" class="form-control" id="percent" placeholder="Porcentaje de la habilidad"
+                                                    name="percent" [(ngModel)]="skill.percent" required>
                                             </div>
                                             <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Guardar
                                             </button>

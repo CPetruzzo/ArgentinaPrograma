@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
 import { Info } from 'src/app/model/info';
 import { InfoService } from 'src/app/service/info.service';
+import { EncabezadoComponent } from '../encabezado.component';
 
 @Component({
   selector: 'app-info',
@@ -18,7 +19,8 @@ export class InfoComponent implements OnInit {
     
     private infoService: InfoService,
     private router: Router,
-    private appComp: AppComponent
+    private appComp: AppComponent,
+    private infoComp: EncabezadoComponent
   ) { }
 
   ngOnInit(): void {
@@ -28,11 +30,17 @@ export class InfoComponent implements OnInit {
     console.log(this.info);
     this.infoService.update(1, this.info).subscribe(
       data => {
-        alert("Modicada la información");
-        this.router.navigate(['']);
-      }
+        this.infoComp.cargarInfo();
+        let a = alert("Modicada la información");
+        if (a != null) {
+          window.location.reload();
+        } (error: any) => {
+          let b = alert("No se pudo modificar la información");
+          if (b != null) {
+            window.location.reload();
+          }}
+        }
     )
-  this.appComp.reloadCurrentPage();
   }
 }
 

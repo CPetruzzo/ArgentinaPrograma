@@ -49,7 +49,7 @@ export class EncabezadoComponent implements OnInit {
     console.log(this.info);
     this.infoService.update(33, this.info).subscribe(
       data => {
-        alert("Modicado el perfil");
+        alert("Modificado el perfil");
         this.router.navigate(['']);
       }
     )

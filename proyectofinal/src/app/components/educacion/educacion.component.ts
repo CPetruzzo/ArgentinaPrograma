@@ -10,21 +10,22 @@ import { TokenService } from 'src/app/service/token.service';
   styleUrls: ['./educacion.component.css']
 })
 export class EducacionComponent implements OnInit {
-  
+
   id?: number;
   titulo: string = '';
   lugar: string = '';
-  fecha_inicio!: number;
-  fecha_fin!: number;
-  
-  educacion: Educacion = new Educacion("","",0,0);
+  fecha_inicio: number = 0;
+  fecha_fin: number = 0;
+
+  educacion: Educacion = new Educacion("", "", 0, 0);
   educacionLista: Educacion[] = [];
 
   constructor(private educacionService: EducacionService,
-    private tokenService: TokenService, 
+    private tokenService: TokenService,
     private router: Router) { }
   isLogged = false;
-  modalOn=false;
+  modalOn = false;
+  newModalOn = false;
 
   ngOnInit(): void {
     this.cargarEducacion();
@@ -35,45 +36,65 @@ export class EducacionComponent implements OnInit {
     }
   }
 
-  cargarEducacion(): void {
+  public cargarEducacion(): void {
     this.educacionService.getEducacion().subscribe(data => {
       this.educacionLista = data;
     })
   }
-  
-  onDeleteEdu(id?: number){
+
+  onDeleteEdu(id?: number) {
     console.log(id);
-    if(id != undefined){
+    if (id != undefined) {
       this.educacionService.deleteEducacion(id)
-      .subscribe(data => {
-        this.cargarEducacion();
-      })
+        .subscribe(data => {
+          this.cargarEducacion();
+          let suc = alert("Eliminada la educacion");
+          if (suc != null) {
+            window.location.reload();
+          }
+        }, error => {
+          this.cargarEducacion();
+          let fail = alert("Eliminada la educacion!");
+          if (fail != null) {
+            window.location.reload();
+          }
+        }
+        );
     }
-    window.location.reload();
   }
 
-
-
-  onUpdateEdu(id?: number){
+  onUpdateEdu(id?: number) {
     console.log(id);
     let educ = this.educacionLista.find(x => x.id == id);
-    if(id != undefined && educ != undefined){
+    if (id != undefined && educ != undefined) {
       this.educacionService.updateEducacion(id, educ).subscribe(
-      data => {
-        alert("Modicada la educacion");
-      }
-    )
-    this.cargarEducacion();
-      window.location.reload();  
+        data => {
+          this.cargarEducacion();
+          let a = alert("Modificada la educacion");
+          if (a != null) {
+            window.location.reload();
+          }
+        }
+      )
     }
   }
 
-
-  onModal(){
-    this.modalOn=true;
+  onModal() {
+    this.modalOn = true;
+  }
+  onModalOff() {
+    this.modalOn = false;
   }
 
-  onModalOff(){
-    this.modalOn=false;
+  /////////////////////////////////////////////
+
+  onNewModal() {
+    this.newModalOn = true;
   }
+  onNewModalOff() {
+    this.newModalOn = false;
+  }
+
+
+
 }

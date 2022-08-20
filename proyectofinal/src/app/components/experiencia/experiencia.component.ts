@@ -40,10 +40,14 @@ export class ExperienciaComponent implements OnInit {
         this.experienciaService.delete(id)
         .subscribe(data => {
           this.cargarExperiencia();
-        })
-      }
-      window.location.reload();
+          let a = alert("Eliminada la experiencia");
+          if (a != null) {
+            window.location.reload();
+          }
+        }
+      )
     }
+  }
   
     onUpdateExp(id?: number){
       console.log(id);
@@ -51,14 +55,16 @@ export class ExperienciaComponent implements OnInit {
       if(id != undefined && exp != undefined){
         this.experienciaService.update(id, exp).subscribe(
         data => {
-          alert("Modicada la experiencia");
-        }
-      )
-      this.cargarExperiencia();
-        window.location.reload();  
+            this.cargarExperiencia();
+            let a = alert("Modificada la experiencia");
+            if (a != null) {
+              window.location.reload();
+            }
+          }
+        )
       }
     }
-  
+
     onModal(){
       this.modalOn=true;
     }

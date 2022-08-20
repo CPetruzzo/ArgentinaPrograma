@@ -12,59 +12,85 @@ export class ProyectsComponent implements OnInit {
 
   modalOn: boolean = false;
   proyectoLista: Proyecto[] = [];
-  
+
   constructor(private proyectoService: ProyectoService, private tokenService: TokenService) { }
-    
-    isLogged = false;
-  
-    ngOnInit(): void { 
+
+  isLogged = false;
+
+  ngOnInit(): void {
     this.cargarProyecto();
-      if(this.tokenService.getToken()){
-        this.isLogged=true;
-      }else{
-        this.isLogged = false;
+    if (this.tokenService.getToken()) {
+      this.isLogged = true;
+    } else {
+      this.isLogged = false;
+    }
+  }
+
+  cargarProyecto() {
+    this.proyectoService.list().subscribe(
+      (data) => {
+        this.proyectoLista = data;
       }
-    }
+    );
+  }
 
-    cargarProyecto(){
-      this.proyectoService.list().subscribe(
-        (data) => {
-          this.proyectoLista = data;
-        }
-      );
-    }
+  reloadProyecto() {
+    this.proyectoService.list().subscribe(
+      (data) => {       
+        this.proyectoLista = data;
+        alert("reload");
+      }
+    );
+  }
 
-    onDeleteProy(id?: number){
-      console.log(id);
-      if(id != undefined){
-        this.proyectoService.delete(id)
+  onDeleteProy(id?: number) {
+    console.log(id);
+    if (id != undefined) {
+      this.proyectoService.delete(id)
         .subscribe(data => {
           this.cargarProyecto();
-        })
-      }
-      window.location.reload();
-    }
-  
-    onUpdateProy(id?: number){
-      console.log(id);
-      let exp = this.proyectoLista.find(x => x.id == id);
-      if(id != undefined && exp != undefined){
-        this.proyectoService.update(id, exp).subscribe(
-        data => {
-          alert("Modicado el proyecto");
+          let a = alert("Eliminado el proyecto");
+          if (a != null) {
+            window.location.reload();
+          } (error: any) => {
+            let b = alert("No se pudo eliminar el proyecto");
+            if (b != null) {
+              window.location.reload();
+            }
+          }
         }
       )
-      this.cargarProyecto();
-        window.location.reload();  
-      }
     }
-  
-    onModal(){
-      this.modalOn=true;
+  }
+
+  onUpdateProy(id?: number) {
+    console.log(id);
+    let exp = this.proyectoLista.find(x => x.id == id);
+    if (id != undefined && exp != undefined) {
+      this.proyectoService.update(id, exp).subscribe(
+        data => {
+          this.cargarProyecto();
+          let a = alert("Modificado el proyecto");
+          if (a != null) {
+            window.location.reload();
+          } (error: any) => {
+            let b = alert("No se pudo modificar la información del proyecto");
+            if (b != null) {
+              window.location.reload();
+            }
+          }
+        }
+      )
     }
-  
-    onModalOff(){
-      this.modalOn=false;
-    }
+  }
+
+
+  onModal() {
+    this.modalOn = true;
+  }
+
+  onModalOff() {
+    this.modalOn = false;
+  }
 
 }

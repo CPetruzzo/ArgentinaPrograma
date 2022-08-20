@@ -16,7 +16,7 @@ export class NewProyComponent implements OnInit {
   url: string = '';
 
   constructor(private proyectoService: ProyectoService, 
-    private proyecto: ProyectsComponent,
+    private proyComp: ProyectsComponent,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -26,12 +26,18 @@ export class NewProyComponent implements OnInit {
     const proy = new Proyecto(this.nombre, this.descripcion, this.url);
     this.proyectoService.save(proy).subscribe(
       (data) => {
-        console.log("Proyecto creado con exito");
-        this.router.navigate(['']);
-      }
-    );
-    this.proyecto.cargarProyecto();
-    window.location.reload();
+        this.proyComp.cargarProyecto();
+          let a = alert("Creado el proyecto");
+          if (a != null) {
+            window.location.reload();
+          } (error: any) => {
+            let b = alert("No se pudo crear el proyecto");
+            if (b != null) {
+              window.location.reload();
+            }
+          }
+        }
+      )
+    }
   }
-}
 

@@ -8,7 +8,7 @@ import { Educacion } from '../model/educaction';
 })
 export class EducacionService {
   
-  URL='https://fwarg.herokuapp.com/educacion/';
+  URL='https://web-production-90973.up.railway.app/educacion/';
   
   constructor(private http: HttpClient) {  }
 

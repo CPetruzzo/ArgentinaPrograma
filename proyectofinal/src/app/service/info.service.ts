@@ -10,7 +10,7 @@ import { Info } from '../model/info';
 export class InfoService {
 
 
-  URL='https://fwarg.herokuapp.com/info/';
+  URL='https://web-production-90973.up.railway.app/info/';
 
   constructor(private httpClient : HttpClient) {}
 

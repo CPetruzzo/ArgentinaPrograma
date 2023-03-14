@@ -8,7 +8,7 @@ import { Proyecto } from '../model/proyecto';
 })
 export class ProyectoService {
 
-  URL = 'https://fwarg.herokuapp.com/proyecto';
+  URL = 'https://web-production-90973.up.railway.app/proyecto';
   
   constructor(private httpClient: HttpClient) { }
 

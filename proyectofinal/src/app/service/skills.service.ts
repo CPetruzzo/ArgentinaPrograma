@@ -8,7 +8,7 @@ import { Skills } from '../model/skills';
 })
 export class SkillsService {
   
-  URL='https://fwarg.herokuapp.com/skills';
+  URL='https://web-production-90973.up.railway.app/skills';
   
 
   constructor(private httpClient : HttpClient) { }

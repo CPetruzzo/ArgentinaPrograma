@@ -8,7 +8,7 @@ import { Educacion } from '../model/educaction';
 })
 export class EducacionService {
   
-  URL='https://web-production-90973.up.railway.app/educacion/';
+  URL='https://fwegher.onrender.com/educacion/';
   
   constructor(private http: HttpClient) {  }
 
@@ -36,9 +36,4 @@ export class EducacionService {
   public deleteEducacion(id: number): Observable<any>{
     return this.http.delete<any>(this.URL+ `delete/${id}`);
   }
-
-
-
-
-
 }

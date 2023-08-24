@@ -8,7 +8,7 @@ import { Experiencia } from '../model/experiencia';
 })
 export class ExperienciaService {
 
-  URL = 'https://web-production-90973.up.railway.app/experiencia';
+  URL = 'https://fwegher.onrender.com/experiencia';
   
   constructor(private httpClient: HttpClient) { }
 

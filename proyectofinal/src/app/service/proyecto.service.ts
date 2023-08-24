@@ -8,7 +8,7 @@ import { Proyecto } from '../model/proyecto';
 })
 export class ProyectoService {
 
-  URL = 'https://web-production-90973.up.railway.app/proyecto';
+  URL = 'https://fwegher.onrender.com/proyecto';
   
   constructor(private httpClient: HttpClient) { }
 

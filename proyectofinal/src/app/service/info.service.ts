@@ -10,7 +10,7 @@ import { Info } from '../model/info';
 export class InfoService {
 
 
-  URL='https://web-production-90973.up.railway.app/info/';
+  URL='https://fwegher.onrender.com/info/';
 
   constructor(private httpClient : HttpClient) {}
 
